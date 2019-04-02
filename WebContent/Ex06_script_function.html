@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 내장함수, 사용자 정의 함수 </title>
+<script type="text/javascript">
+	// java : public void print()
+	// java : pubiic String print(int a, int b){return c;}
+	// java : public int print(int num) { return 100+num;}
+	function add(a,b){
+		a+b;
+	}
+
+	function callConfirm() {
+		if(window.confirm("작업내용을 삭제하겠습니까?")) {
+			window.alert("삭제합니다.");
+		} else {
+			alert("취소합니다.");
+		}
+	}
+	
+	function showPopup() {
+		/*
+			https://www.w3schools.com/jsref/met_win_open.asp
+			Parameer values 표확인하기
+			windows.open(URL, name, specs, replace)
+			** specs부분이 브라우저 별로 다름
+			window.open()
+			window.close()
+		*/
+		window.open("http://www.naver.com", "width=200, height=200"); 
+	}
+	
+	function myFunction() {
+		var mywindow = window.open("Ex06_popup.html", "zipcode", "width=200, height=200");
+		mywindow.document.write("<p>This is window</p>");
+	}
+	
+	function goUrlTime(url){ // parameter의 타입을 갖지 않음
+		window.setTimeout("location.href='" + url + "'", 3000); // 3초가 지나면 실행 
+		
+		//페이지 이동
+		//location.href="http://www.daum.net";
+	}
+	
+	function myfun(a,b) {
+		return a+b;
+	}
+	
+	// 익명함수() : 1회성 함수
+	changeColor=function() {
+		window.document.bgColor="silver";
+		window.document.fgColor="red";
+	}
+	
+	var result= myfun(100, 200);
+	console.log(result);
+</script>
+
+</head>
+<body>
+	<h3> 내장함수 사용자 정의 함수 사용하기 </h3>
+	<button onclick="callConfirm()">함수호출</button>
+	<br>
+	<button onclick="myFunction()">달나라로</button>
+	<br>
+	<button onclick="goUrlTime('http://www.daum.net')">주소이동</button>
+	<br>
+	<button onclick="changeColor()">익명함수</button>
+	<br>
+	
+	
+</body>
+</html>

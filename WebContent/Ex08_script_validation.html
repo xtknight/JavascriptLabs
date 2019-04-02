@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript 유효성 검증 </title>
+	<script type="text/javascript">
+		/*
+			유효성 검증
+			입력 > 입력한 데이터 서버 전송 -> 서버 검증 -> 클라이언트 전달 (응답) -> 처리
+			>> 라운드 트립 (네트워크 트래픽)
+			>> 서버에 부담을 줄이고 서버에서 검증할 필요가 없는 데이터는 클라이언트에서 유효성 검증
+			>> 검증완료후 서버로 전송
+		*/
+		function send() {
+			//1. txtuserid input 입력값을 가지고 와서 검증
+			//var texuserid=document.forms[0].elements[0];
+			//위 코드 처럼 하지 않으려면 
+			//form name 속성 필요하고, input도 name속성 필요
+			var userid=document.loginform.txtuserid;
+			console.log(userid);
+			console.log(userid.value);
+
+			var userpwd = document.loginform.txtpwd;
+			console.log(userpwd.value);
+			
+			// 검증
+			if(userid.value=="" || !((userid.value.length >=3) && (userid.value.length<=10))) {
+				alert("다시 입력하세요");
+				//document.loginform.txtuserid.focus(); // 아래와 같음
+				//userid.focus(); //아래와 같음
+				userid.select();
+			} else {
+				alert("검증완료");
+				//전송하는 코드
+				document.loginform.action ="Ex09_login.jsp";
+				document.loginform.submit(); //서버로 전송
+			}
+		}
+	</script>
+</head>
+<body>
+	<form method="get" name="loginform">
+		ID : <input type="text" name="txtuserid"><br>
+		PWD : <input type="password" name="txtpwd"><br>
+		<input type="button" value="전송" onClick="send()">
+		<!-- 
+		<input type="submit" value="전송">
+		<input type="image">
+		 -->
+	</form>
+</body>
+</html>

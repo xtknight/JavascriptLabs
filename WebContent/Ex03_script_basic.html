@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function print() {
+		var element=document.getElementById("demo");
+		console.log(element);
+		//alert(element.innerHTML);
+		element.innerHTML="Hello World";
+		//alert(element.innerHTML);
+	}
+
+</script>
+</head>
+<body>
+	<button onClick="print()"> button </button>
+	<p id="demo"> 나 문단 태그야</p>
+	
+</body>
+</html>

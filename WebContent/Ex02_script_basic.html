@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript</title>
+<script type="text/javascript">
+	// javascript 해석, 결과 출력 (웹브라우져)
+	// 웹브라우져 (해석기 + script API 지원)
+	// 내장 객체 가지고 있다(웹브라우져)
+	// window객체
+
+	document.write("출력하기<br>");
+	window.document.write("메롱<br>");
+
+	console.log("웹 브라우져 출력창 제공");
+	console.log("웹 브라우져 cmd창에 원하는 결과 확인");
+	console.log("디버깅, 결과확인, 오류메시지 확인");
+
+	document.write("<br><b>Hello World</b><br>");
+	document.write("<table border='1'>");
+	document.write("<tr><td>AA</td><td>BB</td></tr>");
+	document.write("</table>");
+
+	// console.log() : 검증 데이터
+	console.log(100 + 200);
+
+	// Uncaught TypeError: Cannot read property 'elements' of undefined
+	// javascript은 순차적으로 실행된다.
+	// 1.해결방법 : body제일 뒤에 놓는다.
+	// var element=window.document.forms[0].elements[0];
+	// console.log(element);
+	// 2.해결방법 : 함수로 만든다.
+	function data() {
+		var element = window.document.forms[0].elements[0];
+		alert(element);
+	}
+</script>
+</head>
+<body>
+	<form action="#" method="get" name="myform">
+		ID : <input type="text" value="hong" name="userId"><br>
+		PWD : <input type="password" name="pwd"><br> <input
+			type="submit" value="전송">
+	</form>
+
+	<div style="background-color: gold; width: 200px; height: 150px"
+		onmouseover="this.style.backgroundColor='grey'"
+		onmouseout="this.style.backgroundColor='gold'">this는 div 태그 자신을
+		지칭</div>
+
+	<input type="button" value="클릭해봐" onClick="data()">
+
+</body>
+<script type="text/javascript">
+	// Uncaught TypeError: Cannot read property 'elements' of undefined
+	// javascript은 순차적으로 실행된다.
+	// 1.해결방법 : body제일 뒤에 놓는다.
+	var element = window.document.forms[0].elements[0];
+	console.log(element);
+	console.log(document.forms[0].elements['pwd']);
+	console.log(element.value);
+	console.log(element.value.length);
+
+	// 객체의 계층
+	// form 태그가 name 속성을 가지고 있다면 (name="myform")
+	// window.document.폼이름.요소이름
+	// window.document.폼이름.요소이름.value
+
+	var ele = window.document.myform.userId;
+	console.log(ele);
+	
+	var value = window.document.myform.userId.value;
+	console.log("input 태그 : " + ele);
+	console.log("input 태그값: " + value);
+	
+	if(value.length<5){
+		alert("다시 입력해");
+		ele.value="";
+	}
+</script>
+
+</html>

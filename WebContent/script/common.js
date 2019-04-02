@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+
+function excall(){
+	alert('external');
+}
