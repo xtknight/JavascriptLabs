@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript number, string method</title>
+	<script type="text/javascript">
+		var str="10+20+30";
+		document.write(str+ "<br>");
+		
+		// 1. eval()
+		// 문자형 수식을 계산
+		document.write("eval() : " + eval(str) + "<br>");
+		
+		// 2. isNaN() : Not a Number -> 너 숫자 아니니? => true (문자), false (숫자)
+		document.write(isNaN("12345") + "<br>"); // 숫자(false)
+		document.write(isNaN("12345A") + "<br>"); // 문자(true)
+		document.write(isNaN('12345') + "<br>"); // 숫자(false)
+		
+		// javascript 문자열 함수 학습
+		// https://www.w3schools.com/js/js_string_methods.asp
+		var str2="Apple, Google, Facebook";
+		document.write(str2.length + "<br>");
+		document.write(str2.substr(7,6) + "<br>");
+		document.write(str2.substring(7,13) + "<br>");
+		document.write(str2.replace("Facebook", "Instagram") + "<br>");
+		document.write(str2.split(",")[0] + "<br>");
+		
+		// javascript 숫자 함수 학습
+		// https://www.w3schools.com/js/js_number_methods.asp
+		// Method	Description
+		// Number()	Returns a number, converted from its argument.
+		// parseFloat()	Parses its argument and returns a floating point number
+		// parseInt()	Parses its argument and returns an integer
+		var i="100";
+		var j="200";
+		document.write("결합 : " + (i+j));
+		document.write("<br>숫자변환 : " + (Number(i)+Number(j)));
+		
+		// javascript event
+		// https://www.w3schools.com/js/js_events.asp
+		// Event	Description
+		// onchange	An HTML element has been changed
+		// onclick	The user clicks an HTML element
+		// onmouseover	The user moves the mouse over an HTML element
+		// onmouseout	The user moves the mouse away from an HTML element
+		// onkeydown	The user pushes a keyboard key
+		// onload	The browser has finished loading the page
+		
+		// this >> 버튼 자기자신(button)
+		//<button onclick="this.innerHTML=Date()">The time is </button>
+		//function myfunction(){
+		//	var jumin = document.myform.jumin1
+		//	if(isNaN(jumin.value)) {
+		//		alert("숫자 입력해");
+		//		jumin.focus();
+		//		jumin.select(); // 있는 데이터를 블럭을 잡음
+		//	}
+		//}
+		
+		function focusFunction(){
+			document.getElementById("myinput").style.background="yellow";
+			document.getElementById("myinput").select();
+		}
+		
+		function blurFunction(){ // blur : focus를 잃을때
+			document.getElementById("myinput").style.background="grey";
+		}
+		
+		function selectTag(){
+			alert(document.myform.sel.value);
+		}
+		
+		// POINT (this)
+		function changeColor(obj) {
+			console.log(obj);
+			obj.style.backgroundColor="gold";
+		} 
+		
+		function changeColor2(obj) {
+			console.log(obj);
+			obj.style.backgroundColor="white";
+		} 
+		
+		
+	</script>
+</head>
+<body onload="alert('finished loading\n the page')">
+
+	<form action="" name="myform">
+		<!--
+			onfocus : 포커스가 들어오면
+			onblur : 포커스가 나가면 
+		 -->
+		<input type="text" id="myinput" name="myinput" onblur="blurFunction()" onfocus="focusFunction()">
+		<select name="sel" onchange="selectTag()">
+			<option value="A">AA</option>
+			<option value="B">BB</option>
+			<option value="C">CC</option>
+			<option value="D">DD</option>
+		</select>
+		<br>
+		
+		<input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)">
+		<br>
+		
+		<input type="text" onkeypress="alert('키보드 눌렀군')">
+		<br>
+		<input type="text" value="1000A" name="money">
+	</form>
+
+</body>
+	<script type="text/javascript">
+		var data=document.myform.money.value;
+		document.write(isNaN(data) + "<br>");
+
+	</script>
+</html>

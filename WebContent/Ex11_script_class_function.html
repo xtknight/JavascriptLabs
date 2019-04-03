@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> 내장 객체 + 함수 </title>
+	<script type="text/javascript">
+		/*
+			javascript 내장객체
+			Date(), Array()
+			객체 사용시 new 연사자를 통해서 객체 생성
+			var d=new Date()
+		*/
+		var today = new Date();
+		document.write(today.getFullYear() + "년<br>");
+		document.write(today.getMonth()+1 + "월<br>");
+		document.write(today.getDate() + "일<br>");
+		
+		document.write(today.getHours() + "시<br>");
+		document.write(today.getMinutes() + "분<br>");
+		document.write(today.getSeconds() + "초<br>");
+		
+		// Math
+		document.write(Math.random() + "<br>");
+		document.write(parseInt(Math.random()*45)+1 + "<br>");
+		document.write(Math.round(3.5678) + "<br>");
+		document.write(Math.max(3,8,45,64,8));
+
+		// 문자열 관련 함수 (POINT)
+		var str="ABCDEF";
+		with(document) {
+			write(str + "<br>");
+			write(str.lenth + "<br>");
+			write(str.charAt(2) + "<br>");
+			write(str.indexOf("D") + "<br>");
+			write(str.concat("홍길동") + "<br>");
+
+			var str2 = str.replace("E", "ZZZZZZ");
+			write(str2 + "<br>");
+			write(str2.substring(2,4) + "<br>");
+			write(str2.substr(2,2) + "<br>");
+		}
+
+		var strarr = "A B C D";
+		var arr = strarr.split(" ");
+
+		document.write(typeof(arr) + "<br>");
+		// POINT
+		// java : for(Stirng s : arr)
+		// C# : for(String s in arr)
+		for(var index in arr){
+			document.write(arr[index] + "<br>"); // KEY POINT javascript의 개선된 for문은 index를 반환
+		}
+
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>
