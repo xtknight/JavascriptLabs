@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var optPrice = document.getElementById("optPrice");
+            var getPrice = document.getElementById("getPrice");
+            getPrice.addEventListener("click", bsOption);
+           // getPrice.onClick=bsOption();
+        }
+		
+		function normalcdf(mean, sigma, to) 
+		{
+		    var z = (to-mean)/Math.sqrt(2*sigma*sigma);
+		    var t = 1/(1+0.3275911*Math.abs(z));
+		    var a1 =  0.254829592;
+		    var a2 = -0.284496736;
+		    var a3 =  1.421413741;
+		    var a4 = -1.453152027;
+		    var a5 =  1.061405429;
+		    var erf = 1-(((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*Math.exp(-z*z);
+		    var sign = 1;
+		    if(z < 0)
+		    {
+		        sign = -1;
+		    }
+		    return (1/2)*(1+sign*erf);
+		}
+		
+		function bsOption(){
+            var optType = document.getElementById("optType").value;
+            var S = parseFloat(document.getElementById("S").value);
+            var X = parseFloat(document.getElementById("X").value);
+            var rf = parseFloat(document.getElementById("rf").value);
+            var days = parseFloat(document.getElementById("days").value);
+            var vol = parseFloat(document.getElementById("vol").value);
+            var t = days/255;
+            console.log(t);
+            var price=100;
+            var d1 = (Math.log(S / X) + (rf + vol * vol / 2.0) * t) / (vol * Math.sqrt(t));
+            var d2 = d1 - vol*Math.sqrt(t);    
+            console.log((1/(vol*Math.sqrt(t))));
+            console.log((Math.log(S/X)+(rf+(Math.pow(vol,2)/2)*t)));
+            console.log("d1 " + d1);
+            console.log("d2 " + d2);
+			if(optType=="C") {
+               price = S*normalcdf(0,1,d1)-X*Math.exp(-rf*t)*normalcdf(0,1,d2);
+            } else if (optType=="P") {
+               price = X*Math.exp(-rf*t)*normalcdf(0,1,-d2) - S*normalcdf(0,1,-d1);     
+            }
+            optPrice.value=price;
+		}
+	</script>
+
+</head>
+<body>
+    <div id="opt">
+            <select id="optType">
+                    <option value="C" selected>Call</option>
+                    <option value="P">Put</option>
+                </select><br>
+                 주식가격 <input type="text" id="S"><br>
+                      행사가격 <input type="text" id="X"><br>
+                      무위험이자율 <input type="text" id="rf"><br>
+                      잔존만기일수 <input type="text" id="days"><br>
+                      변동성 <input type="text" id="vol"><br>
+                <input type="submit" id="getPrice" value="Submit" ><br>
+                <hr>
+                     옵션가격 <input type="text" id="optPrice"><br>      
+            
+    </div>
+	
+</body>
+</html>

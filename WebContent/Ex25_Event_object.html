@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var btn = document.getElementById("mybtn");
+		btn.onclick = function(event) { 
+			//event가 발생하면 이벤트의 정보를 담고 있는 event객체가 자동생성
+			console.log(event.type);
+			console.log(event.target);
+			console.log(event.currentTarget);
+			console.log(event.x);
+			console.log(event.y);
+		}
+		
+		var btn = document.getElementById("mybtn2"); 
+		var handler = function(event){ 
+			switch(event.type){ 
+				case "click": //코드 
+					break; 
+				case "mouseover": //코드 
+					event.target.style.backgroundColor = "red"; 
+					break; 
+				case "mouseout": //코드 
+					event.target.style.backgroundColor = ""; 
+					break; 
+			} 
+		};
+		
+		btn.onclick = handler; 
+		btn.onmouseover = handler; 
+		btn.onmouseout = handler;
+
+		//	출처: https://blog.sonim1.com/152 [Kendrick's Blog]
+	}
+</script>
+</head>
+<body>
+	<button id="mybtn"><span>눌러봐</span></button>
+	
+	<button id="mybtn2"><span>눌러봐</span></button>
+</body>
+</html>

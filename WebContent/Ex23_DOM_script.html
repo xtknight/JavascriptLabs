@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM node 계층</title>
+	
+	<script type="text/javascript">
+		window.onload = function () {
+			var menode;
+			menode = document.getElementById("me");
+			menode.style.backgroundColor="yellow";
+			
+			var parentnode = menode.parentNode; // body
+			parentnode.style.backgroundColor="skyblue";
+			
+			var grandnode = parentnode.parentNode; // html
+			grandnode.style.backgroundColor="green";
+			
+			var my = document.getElementById("mychild");
+			console.log(my);
+			console.log(my.firstChild.nodeName); // li
+			console.log(my.firstChild.innerText); // value속성이 없는 태그
+			console.log(my.firstChild.nextSibling.innerText); // value속성이 없는 태그
+			console.log(my.childNodes.length);
+			console.log(my.lastChild.innerText);
+		}
+	</script>
+</head>
+<body>
+	<div>A</div><div>B</div><div id="me">C</div><div>D</div><div>E</div>
+	<ul id="mychild"><li>AA</li><li>BB</li><li>CC</li></ul>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM 슬라이드</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			var myphotos = Array("images/1.jpg",
+								 "images/2.jpg",
+								 "images/3.jpg",
+								 "images/4.jpg");
+			
+			document.getElementById("prv").onclick = function() {
+				var img = document.getElementById("imgs");
+				console.log(img);
+				var current = img.getAttribute("src");
+				var prv =Number(current.substr(7,1))-2;
+				img.setAttribute("src", myphotos[getPrevious(prv)]);	
+			}
+
+			document.getElementById("next").onclick = function() {
+				var img = document.getElementById("imgs");
+				console.log(img);
+				var current = img.getAttribute("src");
+				var next =Number(current.substr(7,1));
+				img.setAttribute("src", myphotos[getNext(next)]);
+			}
+			
+			
+			function getNext(next) {
+				var seq=0;
+				if(next<myphotos.length){
+					seq = next;
+				} else {
+					seq = next%myphotos.length;
+				}
+				return seq;
+			}
+
+			function getPrevious(prv) {
+				var seq=0;
+				if(prv>=0){
+					seq = prv;
+				} else {
+					seq = myphotos.length-1;
+				}
+				return seq;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<h3> DOM 슬라이드 </h3>
+	<img src="images/1.jpg" id="imgs" width="200" height="200" alt="이미지">
+	<hr>
+	<a href="#" id="prv">이전</a> || <a href="#" id="next">다음</a>
+</body>
+</html>

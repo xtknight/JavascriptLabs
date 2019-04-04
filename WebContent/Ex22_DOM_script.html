@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		table {width: 100%}
+		table, tr, th, td {border: 1px solid; border-collapse: collapse;}
+	
+	</style>
+	
+	<script type="text/javascript">
+		window.onload=function() {
+			/*
+			     동적테이블 생성을 클릭하면 해당 행,열의 테이블을 생성
+			     <table id="tab">
+				    <tr><td></td><td></td></tr>
+				    <tr><td></td><td></td></tr>
+				 </table>
+			   만들어진 table을 body>div의 자식요소로 추가	 
+				 
+				 
+			    동적테이블 제거를 클릭하면 해당 테이블을 삭제
+			*/
+			document.getElementById("b1").onclick = function() {
+				   var rownum = Number(document.getElementById("txtrow").value);
+				   var colnum = Number(document.getElementById("txtcolumn").value);
+				   console.log(document.getElementById("txtcolumn"));
+				   var table = document.createElement("table");
+				   table.setAttribute("border","1");
+				   table.setAttribute("id", "tbl");
+				   
+				   for(var i=0; i<rownum; i++){
+					   var row = document.createElement("tr");
+					   for(var j=0; j<colnum; j++){
+						   var col = document.createElement("td");
+						   var textnode = document.createTextNode((i+1)+"행" + "," + (j+1)+ "열");
+						   col.appendChild(textnode);
+						   row.appendChild(col);
+						   table.appendChild(row);
+					   }
+					   
+				   }
+				   console.log(row);
+				   //document.body.appendChild(div).appendChild(table);
+				   document.getElementById("div").appendChild(table);
+			}
+			
+			   
+  		   document.getElementById("b2").onclick = function() {
+  			   // 동일한 id를 가진 여러 개의 테이블이 있다면 제일 먼저 만나는 녀석만 삭제
+  			   
+  			   //var tab=document.getElementById("tbl");
+  			   //document.getElementById("tbldiv").removeChild(tab);
+  			   var tables = document.getElementsByTagName("table");
+  			   if(tables.length>0) {
+  					document.getElementById("div").removeChild(tables[tables.length-1]);
+  				} else {
+  					alert("모두 삭제되었습니다.");
+  				}
+		   }
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="div">
+		행의 수 : <input type="text" id="txtrow" name="txtrow" value="2"><br>
+		열의 수 : <input type="text" id="txtcolumn" name="txtcolumn" value="2"><br>
+		<input type="button" id="b1" value="동적테이블생성">
+		<input type="button" id="b2" value="동적테이블제거">
+
+<!-- 		
+				<table id="tab" border="1">
+				    <tr><td>1</td><td>2</td></tr>
+				    <tr><td>3</td><td>4</td></tr>
+				 </table>
+ -->				 
+	</div>
+</body>
+</html>

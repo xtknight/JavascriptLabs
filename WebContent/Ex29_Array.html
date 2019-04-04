@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Array(정적 + 동적)</title>
+	<script type="text/javascript">
+		// javascript (정적 + 동적)
+		var array =['포도','사과'];
+		document.write(array.toString() + "<br>");
+		for (var i=0; i<array.length; i++) {
+			document.write(array[i] + "<br>");
+		}
+		document.write("<hr>");
+		
+		array[2]="바나나";
+
+		for (var i=0; i<array.length; i++) {
+			document.write(array[i] + "<br>");
+		}
+		document.write("<hr>");
+		
+		array[10]="애플망고";
+		for (var i=0; i<array.length; i++) {
+			document.write(array[i] + "<br>");
+		}
+		
+		document.write("<hr>");
+		array[9]="배";
+		for (var i=0; i<array.length; i++) {
+			document.write(array[i] + "<br>");
+		}
+		document.write("<hr>");
+		
+		var array2 =["one", "two", "three"];
+		array2.length=2; // 강제로 배열의 크기를 줄일 수 있음
+		for(var index in array2){
+			document.write(array2[index] + "<br>");
+		} 		
+		document.write("<hr>");
+		
+		array2.length=4;
+		document.write(array2.toString());
+		document.write("<hr>");
+		
+		// TODAY's POINT : push /pop (stack의 구조와 같음)
+		array2.push("Four");
+		document.write(array2.toString())
+		document.write("<hr>");
+		document.write(array2.length);
+		document.write("<hr>");
+		document.write(array2.pop() + "<br>");
+		document.write(array2.pop() + "<br>");
+	</script>
+</head>
+<body>
+
+</body>
+</html>
