@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="script/xml2json.js"></script>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
+
+	<script type="text/javascript">
+		$.ajax({
+			crossOrigin : true,
+			dataType : "json",
+			url : 'http://apis.data.go.kr/1611000/BldRgstService/getBrBasisOulnInfo?sigunguCd=11680&bjdongCd=10300&bun=0012&ji=0000&ServiceKey=ryZoIP22wQNRDAGZGW8PneyVKo%2BvnUI0j9wMoVaeo%2FEs8VnhDvzdd43lLtZgU7INjjVrukgkqoSxwDzcvWPH9A%3D%3D',
+			success : function(data) {
+				console.log(data);
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		// window.onload = function() {
+		// 	// http://tcpschool.com/xml/xml_dom_xmlHttpRequest
+		// 	var xmlHttp = new XMLHttpRequest();    
+			
+		// 	var url = 'http://apis.data.go.kr/1611000/BldRgstService/getBrBasisOulnInfo?sigunguCd=11680&bjdongCd=10300&bun=0012&ji=0000&ServiceKey=ryZoIP22wQNRDAGZGW8PneyVKo%2BvnUI0j9wMoVaeo%2FEs8VnhDvzdd43lLtZgU7INjjVrukgkqoSxwDzcvWPH9A%3D%3D';
+			
+		// 	xmlHttp.onreadystatechange = function() { // onreadystatechange 이벤트 핸들러를 작성함.
+		// 		// 서버상에 문서가 존재하고 요청한 데이터의 처리가 완료되어 응답할 준비가 완료되었을 때
+		// 		if(this.status == 200 && this.readyState == this.DONE) {
+		// 			// 요청한 데이터를 문자열로 반환함.
+		// 			document.getElementById("jsonResult").innerHTML = xmlHttp.responseText;            
+		// 		}
+		// 	};
+
+		// 	xmlHttp.open("GET", url, true);
+
+		// 	xmlHttp.send();
+		// 	//var jsonFile = xml2json(url,"");
+		// 	//console.log(url);
+	
+		//}
+	</script>	
+</head>
+<body>
+	<P id="jsonResult"></P>
+</body>
+</html>

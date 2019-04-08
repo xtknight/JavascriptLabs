@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+    // 1. javascript 배열 : var arr=[10, 20, 30];
+    // 2. JSON : {} : var obj={}
+
+    // 객체와 배열 혼합
+    var students = [];
+    console.log(students);
+
+    // 배열이 객체를 가질 수 있다.
+    students.push({이름:"홍길동", 국어:80, 영어:60});
+    students.push({이름:"김유신", 국어:100, 영어:50});
+    students.push({이름:"이순신", 국어:100, 영어:100});
+
+    // 객체에 접근
+    // var obj = students[0]
+    for(var index in students){
+        students[index].getSum = function() { return this.국어 + this.영어;};
+        students[index].getAvg = function() { return this.getSum()/2};
+    }
+    console.log(students);
+        document.write("이름 &nbsp;&nbsp;&nbsp;&nbsp;총점&nbsp;&nbsp;&nbsp;평균&nbsp;&nbsp;&nbsp<br>");
+    for(var index in students){
+        document.write(students[index].이름 + " / " + students[index].getSum() + " / " + students[index].getAvg() + "<br>");
+        //document.writebr(students[index].이름 + " / " + students[index].getSum() + " / " + students[index].getAvg() + "<br>");
+    }
+
+  
+</script>
+</head>
+<body>
+
+</body>
+</html>
