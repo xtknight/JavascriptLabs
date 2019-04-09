@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+	    .container {
+		    width: 420px;
+		    height: 140px;
+		    padding: 10px;
+		    margin: 10px;
+		    background-color: lightgrey;
+	    }   
+	
+	    #div1, #div2, #div3 {
+		    width: 350px;
+		    height: 80px;
+		    margin-left: 20px;
+		    padding: 10px;
+		    border: 1px solid #aaaaaa;
+		    background-color: green;
+	    }
+	
+	    .draggable {
+	        width: 300px;
+	        height: 60px;
+	        margin-right: 5px;
+	        background-color:wheat;
+	    }
+    </style>
+
+    <script>
+        function allowDrop(ev) {
+        ev.preventDefault();
+        }
+
+        function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <h2><b>Tororo</b></h2>
+
+    <div class="container"> 
+        TO DO <br>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        	<div id="draggable1" class="draggable" draggable="true" ondragstart="drag(event)">
+        		drag me!
+        	</div>
+        </div>
+    </div>
+
+    <div class="container"> 
+        DOING <br>
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+    </div>
+
+    <div class="container"> 
+        DONE <br>
+        <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    
+</body>
+</html>
